@@ -4,8 +4,11 @@ import PageLayout from '@/components/layout/PageLayout';
 import InfoCard from '@/components/ui/InfoCard';
 import EditableField from '@/components/ui/EditableField';
 import { toast } from '@/components/ui/use-toast';
+import { useVisibility } from '@/context/VisibilityContext';
 
 const AdminPage = () => {
+  const { showConnectedEnvironment, showUserInformation } = useVisibility();
+  
   // Mock data for XM Cloud environment
   const [environmentData, setEnvironmentData] = useState({
     id: 'env-12345-67890-abcde',
@@ -74,62 +77,66 @@ const AdminPage = () => {
       subtitle="Manage your Sitecore XM Cloud environment settings"
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <InfoCard title="Connected XM Cloud Environment" className="col-span-1 lg:col-span-2">
-          <EditableField 
-            label="Environment ID" 
-            value={environmentData.id} 
-            isEditable={false}
-          />
-          <EditableField 
-            label="Environment Name" 
-            value={environmentData.name} 
-            isEditable={true}
-            onChange={handleEnvironmentNameChange}
-          />
-          
-          <div className="mt-6 pt-4 border-t border-sitecore-midgray">
-            <h3 className="text-md font-semibold mb-3 text-gray-800">Parent XM Cloud Project</h3>
+        {showConnectedEnvironment && (
+          <InfoCard title="Connected XM Cloud Environment" className="col-span-1 lg:col-span-2">
             <EditableField 
-              label="Project ID" 
-              value={environmentData.project.id} 
+              label="Environment ID" 
+              value={environmentData.id} 
               isEditable={false}
             />
             <EditableField 
-              label="Project Name" 
-              value={environmentData.project.name} 
+              label="Environment Name" 
+              value={environmentData.name} 
               isEditable={true}
-              onChange={handleProjectNameChange}
+              onChange={handleEnvironmentNameChange}
             />
             
             <div className="mt-6 pt-4 border-t border-sitecore-midgray">
-              <h3 className="text-md font-semibold mb-3 text-gray-800">Parent Sitecore Organization</h3>
+              <h3 className="text-md font-semibold mb-3 text-gray-800">Parent XM Cloud Project</h3>
               <EditableField 
-                label="Organization ID" 
-                value={environmentData.project.organization.id} 
+                label="Project ID" 
+                value={environmentData.project.id} 
                 isEditable={false}
               />
               <EditableField 
-                label="Organization Name" 
-                value={environmentData.project.organization.name} 
-                isEditable={false}
+                label="Project Name" 
+                value={environmentData.project.name} 
+                isEditable={true}
+                onChange={handleProjectNameChange}
               />
+              
+              <div className="mt-6 pt-4 border-t border-sitecore-midgray">
+                <h3 className="text-md font-semibold mb-3 text-gray-800">Parent Sitecore Organization</h3>
+                <EditableField 
+                  label="Organization ID" 
+                  value={environmentData.project.organization.id} 
+                  isEditable={false}
+                />
+                <EditableField 
+                  label="Organization Name" 
+                  value={environmentData.project.organization.name} 
+                  isEditable={false}
+                />
+              </div>
             </div>
-          </div>
-        </InfoCard>
+          </InfoCard>
+        )}
         
-        <InfoCard title="User Information">
-          <EditableField 
-            label="User ID" 
-            value={userData.id} 
-            isEditable={false}
-          />
-          <EditableField 
-            label="User Name" 
-            value={userData.name} 
-            isEditable={true}
-            onChange={handleUserNameChange}
-          />
-        </InfoCard>
+        {showUserInformation && (
+          <InfoCard title="User Information" className={!showConnectedEnvironment ? "col-span-1 lg:col-span-3" : ""}>
+            <EditableField 
+              label="User ID" 
+              value={userData.id} 
+              isEditable={false}
+            />
+            <EditableField 
+              label="User Name" 
+              value={userData.name} 
+              isEditable={true}
+              onChange={handleUserNameChange}
+            />
+          </InfoCard>
+        )}
       </div>
     </PageLayout>
   );
