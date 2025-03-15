@@ -131,7 +131,7 @@ const JsonViewer: React.FC<JsonViewerProps> = ({
               ))}
             </div>
           )}
-          {isExpanded && level > 0 && <span>}</span>}
+          {isExpanded && level > 0 && <span>{'}'}</span>}
         </>
       )}
     </div>
