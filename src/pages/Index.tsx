@@ -38,19 +38,26 @@ const Index = () => {
         
         <div className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all hover:shadow-lg hover:-translate-y-1">
           <div className="p-6 border-b border-sitecore-midgray bg-gradient-to-r from-sitecore-accent/5 to-white">
-            <h2 className="text-2xl font-semibold mb-2 text-gray-900">Page Information</h2>
+            <h2 className="text-2xl font-semibold mb-2 text-gray-900">Configuration</h2>
             <p className="text-gray-600">
-              View and edit page details, including metadata, content items, and canvas information
+              Configure system settings, database connections, and deployment options
             </p>
           </div>
           <div className="p-6">
-            <Link to="/page-info">
+            <Link to="/configuration">
               <Button className="w-full bg-sitecore-accent hover:bg-sitecore-accent/90">
-                Go to Page Information
+                Go to Configuration
               </Button>
             </Link>
           </div>
         </div>
+      </div>
+      
+      <div className="mt-8 text-center">
+        <p className="text-gray-600 mb-2">Need to access page information?</p>
+        <Link to="/page-info" className="text-sitecore-accent hover:underline">
+          Go to Page Information
+        </Link>
       </div>
     </div>
   );

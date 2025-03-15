@@ -118,4 +118,9 @@
   .page-transition {
     animation: fade-in 0.4s ease forwards;
   }
+  
+  /* Fix for hover style */
+  .hover\:bg-accent:hover {
+    background-color: rgba(110, 63, 255, 0.1); /* Lighter version of the accent color */
+  }
 }

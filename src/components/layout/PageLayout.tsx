@@ -6,12 +6,18 @@ interface PageLayoutProps {
   children: React.ReactNode;
   title: string;
   subtitle?: string;
+  showNavbar?: boolean;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ children, title, subtitle }) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ 
+  children, 
+  title, 
+  subtitle,
+  showNavbar = true 
+}) => {
   return (
     <div className="min-h-screen bg-sitecore-lightgray">
-      <Navbar />
+      {showNavbar && <Navbar />}
       <main className="container mx-auto px-4 py-8 animate-fade-in">
         <div className="max-w-6xl mx-auto">
           <header className="mb-8">

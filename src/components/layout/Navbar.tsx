@@ -25,20 +25,20 @@ const Navbar = () => {
               className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 location.pathname === '/admin' 
                   ? 'bg-sitecore-accent text-white' 
-                  : 'text-gray-700 hover:bg-sitecore-midgray hover:text-gray-900'
+                  : 'text-gray-700 hover:bg-sitecore-lightgray hover:text-gray-900'
               }`}
             >
               Environment Admin
             </Link>
             <Link 
-              to="/page-info" 
+              to="/configuration" 
               className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                location.pathname === '/page-info' 
+                location.pathname === '/configuration' 
                   ? 'bg-sitecore-accent text-white' 
-                  : 'text-gray-700 hover:bg-sitecore-midgray hover:text-gray-900'
+                  : 'text-gray-700 hover:bg-sitecore-lightgray hover:text-gray-900'
               }`}
             >
-              Page Information
+              Configuration
             </Link>
           </div>
         </div>
