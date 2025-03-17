@@ -85,9 +85,9 @@ const EditableField: React.FC<EditableFieldProps> = ({
                 variant="ghost"
                 size="icon"
                 onClick={handleEdit}
-                className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-secondary"
               >
-                <Pencil size={16} className="text-sitecore-accent" />
+                <Pencil size={16} className="text-gray-600" />
               </Button>
             )}
           </div>
