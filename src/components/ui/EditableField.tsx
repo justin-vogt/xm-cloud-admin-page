@@ -64,7 +64,7 @@ const EditableField: React.FC<EditableFieldProps> = ({
               variant="ghost"
               size="icon"
               onClick={handleSave}
-              className="h-8 w-8 text-green-600"
+              className="h-8 w-8 text-green-600 hover:bg-secondary"
             >
               <Check size={16} />
             </Button>
@@ -72,7 +72,7 @@ const EditableField: React.FC<EditableFieldProps> = ({
               variant="ghost"
               size="icon"
               onClick={handleCancel}
-              className="h-8 w-8 text-red-500"
+              className="h-8 w-8 text-red-500 hover:bg-secondary"
             >
               <X size={16} />
             </Button>
